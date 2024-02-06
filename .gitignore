@@ -1,0 +1,15 @@
+# Ignore output folders
+mochawesome-report
+test-result
+node_modules
+.idea
+yarn.lock
+index.json
+cypress/screenshots
+
+
+# Ignore large files
+*.zip
+*.mp4
+*.log
+
