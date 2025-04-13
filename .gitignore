@@ -6,14 +6,9 @@ node_modules
 yarn.lock
 index.json
 cypress/screenshots
-fixtures/imageFiles
-
 
 
 # Ignore large files
 *.zip
 *.mp4
 *.log
-*.png
-*.jpeg
-
