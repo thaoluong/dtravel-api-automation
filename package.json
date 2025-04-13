@@ -9,13 +9,14 @@
     "merge-report": "mochawesome-merge \"test-result/*.json\" > index.json",
     "build-report": "marge index.json",
     "open-report": "yarn merge-report && yarn build-report && serve mochawesom-report"
-},
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "cypress": "^14.3.0",
+    "cypress-file-upload": "^5.0.8",
     "marge": "^1.0.1",
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "4.3.0",

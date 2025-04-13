@@ -1,8 +1,8 @@
 {
-  "propertyTypeId": 10,
+  "propertyTypeId": 15,
   "roomType": "Entire Place",
   "squareType": "meters",
-  "squareMeters": 100,
+  "squareMeters": 1000,
   "timezone": "Asia/Ho_Chi_Minh",
   "address": {
     "country": "Vietnam",

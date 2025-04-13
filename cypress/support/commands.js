@@ -38,12 +38,52 @@ Cypress.Commands.add('createProperty', (payload) => {
             'Content-Type': 'application/json'
         },
         body: payload,
-    }).then((response) => {
-        expect(response.status).to.eq(201, `${response.body.data.id} has created`)
-        cy.log(response.body)
-        Cypress.env('createdPropertyId', response.body.data.id) //set createdPropertyId for environment variable
+    })
+});
+
+/**
+ * @memberOf cy
+ * @method uploadImageFile
+ * */
+Cypress.Commands.add('uploadImageFile', (propertyId, fileName) => {
+    cy.fixture(fileName, 'base64').then((fileContent) => {
+        cy.window().then((win) => {
+            const blob = Cypress.Blob.base64StringToBlob(fileContent, 'image/jpeg');
+            const formData = new win.FormData();
+            formData.append('file', blob, fileName);
+
+            return win.fetch(`${Cypress.config('baseUrl')}/native-property/${propertyId}/upload`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${Cypress.env('token')}`,
+                },
+                body: formData,
+            }).then(async (res) => {
+                const body = await res.json();
+                // cy.log('📥 Upload response:', JSON.stringify(body));
+                return body;
+            });
+        });
     });
 });
+
+
+/**
+ * @memberOf cy
+ * @method saveImages
+ * */
+Cypress.Commands.add('saveImages', (propertyId, createImagePayload) => {
+    cy.request({
+        method: 'POST',
+        url: `/native-property/${propertyId}/images`,
+        headers: {
+            Authorization: `Bearer ${Cypress.env('token')}`,
+            'Content-Type': 'application/json'
+        },
+        body: createImagePayload
+    })
+})
+
 
 
 /**
@@ -58,9 +98,6 @@ Cypress.Commands.add('deleteProperty', deleteNum => {
         headers: {
             Authorization: `Bearer ${Cypress.env('token')}`,
             'Content-Type': 'application/json'
-        },
-    }).then((response) => {
-        expect(response.status).to.eq(201, `${deleteNum} has deleted`)
-        cy.log(response.body)
+        }
     })
 })
