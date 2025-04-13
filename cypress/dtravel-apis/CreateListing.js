@@ -53,7 +53,8 @@ describe('Create Native Property API', () => {
         '214994775.jpeg',
         '219028904.jpeg',
         '238490951.jpeg',
-        '346327001.jpeg']
+        '346327001.jpeg',
+        '238699414.jpeg']
 
     xit('should be able to upload file using custom command', () => {
         const imageUrls =[];
