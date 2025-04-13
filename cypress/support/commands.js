@@ -23,3 +23,44 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+/**
+ * @memberOf cy
+ * @method createProperty
+ * @param {Object} payload
+ * */
+
+Cypress.Commands.add('createProperty', (payload) => {
+    cy.request({
+        method: 'POST',
+        url: '/native-property',
+        headers: {
+            Authorization: `Bearer ${Cypress.env('token')}`,
+            'Content-Type': 'application/json'
+        },
+        body: payload,
+    }).then((response) => {
+        expect(response.status).to.eq(201, `${response.body.data.id} has created`)
+        cy.log(response.body)
+        Cypress.env('createdPropertyId', response.body.data.id) //set createdPropertyId for environment variable
+    });
+});
+
+
+/**
+ * @memberOf cy
+ * @method deleteProperty
+ * @param {String} deleteNum
+ * */
+Cypress.Commands.add('deleteProperty', deleteNum => {
+    cy.request({
+        method: 'POST',
+        url: `/property/${deleteNum}/delete`,
+        headers: {
+            Authorization: `Bearer ${Cypress.env('token')}`,
+            'Content-Type': 'application/json'
+        },
+    }).then((response) => {
+        expect(response.status).to.eq(201, `${deleteNum} has deleted`)
+        cy.log(response.body)
+    })
+})

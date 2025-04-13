@@ -1,0 +1,22 @@
+{
+  "propertyTypeId": 10,
+  "roomType": "Entire Place",
+  "squareType": "meters",
+  "squareMeters": 100,
+  "timezone": "Asia/Ho_Chi_Minh",
+  "address": {
+    "country": "Vietnam",
+    "countryCode": "VN",
+    "state": "HN",
+    "city": "Hanoi",
+    "street": "Tran Huu Duc",
+    "address": "30 Tran Huu Duc",
+    "publicAddress": "30 Tran Huu Duc, Hanoi",
+    "zipcode": "700000",
+    "lat": 10.762622,
+    "lng": 106.660172
+  },
+  "settingSteps": 2,
+  "minNights": 1,
+  "maxNights": 90
+}
