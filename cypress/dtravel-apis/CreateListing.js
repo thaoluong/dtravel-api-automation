@@ -19,14 +19,14 @@ describe('Create Native Property API', () => {
         });
     });
 
-    xit('Upload file using fetch and check response', () => {
-        cy.fixture('238490951.jpeg', 'base64').then((fileContent) => {
+    it('Upload file using fetch and check response', () => {
+        cy.fixture('imageFiles/238490951.jpeg', 'base64').then((fileContent) => {
             cy.window().then((win) => {
                 const blob = Cypress.Blob.base64StringToBlob(fileContent, 'image/jpeg');
                 const formData = new win.FormData();
-                formData.append('file', blob, '238490951.jpeg');
+                formData.append('file', blob, 'imageFiles/238490951.jpeg');
 
-                return win.fetch('https://api.dataismist.com/listing-service/v1/native-property/357728/upload', {
+                return win.fetch(`https://api.dataismist.com/listing-service/v1/native-property/${Cypress.env('propertyId')}/upload`, {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${Cypress.env('token')}`,
@@ -56,19 +56,19 @@ describe('Create Native Property API', () => {
         '346327001.jpeg',
         '238699414.jpeg']
 
-    xit('should be able to upload file using custom command', () => {
+    it('should be able to upload file using custom command', () => {
         const imageUrls =[];
         const imageFiles = files.map((file) => `imageFiles/${file}`);
         cy.log(JSON.stringify(imageFiles, null, 2));
         imageFiles.forEach((file, index) => {
-            cy.uploadImageFile(`${Cypress.config('baseUrl')}/native-property/${propertyId}/upload`,file).then(async (response) => {
+            cy.uploadImageFile(Cypress.env('propertyId'),file).then(async (response) => {
                 expect(await response.success).to.be.true;
                 expect(await response.data).to.include('https://images.dataismist.com/');
                 imageUrls.push(await response.data);
             }).then(() => {
                 cy.request({
                     method: 'POST',
-                    url: `${Cypress.config('baseUrl')}/native-property/357728/images`,
+                    url: `${Cypress.config('baseUrl')}/listing-service/v1/native-property/${Cypress.env('propertyId')}/images`,
                     headers: {
                         Authorization: `Bearer ${Cypress.env('token')}`,
                         'Content-Type': 'application/json'
@@ -84,7 +84,7 @@ describe('Create Native Property API', () => {
     });
 
 
-    it('should be able to upload file using custom command', () => {
+    it('should be able to upload file and save file using custom command', () => {
         const imageUrls =[];
         const imageFiles = files.map((file) => `imageFiles/${file}`);
         cy.log(JSON.stringify(imageFiles, null, 2));
@@ -97,7 +97,7 @@ describe('Create Native Property API', () => {
                 cy.saveImages(Cypress.env('propertyId'), createImagePayload(imageUrls))
                 }).then((response) => {
                     expect(response.status).to.eq(201)
-                    cy.log("ABC: " + JSON.stringify(createImagePayload(imageUrls)))
+                    // cy.log("ABC: " + JSON.stringify(createImagePayload(imageUrls)))
                 })
             })
         })

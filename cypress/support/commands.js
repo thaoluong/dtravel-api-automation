@@ -32,7 +32,7 @@
 Cypress.Commands.add('createProperty', (payload) => {
     cy.request({
         method: 'POST',
-        url: '/native-property',
+        url: '/listing-service/v1/native-property',
         headers: {
             Authorization: `Bearer ${Cypress.env('token')}`,
             'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ Cypress.Commands.add('uploadImageFile', (propertyId, fileName) => {
             const formData = new win.FormData();
             formData.append('file', blob, fileName);
 
-            return win.fetch(`${Cypress.config('baseUrl')}/native-property/${propertyId}/upload`, {
+            return win.fetch(`${Cypress.config('baseUrl')}/listing-service/v1/native-property/${propertyId}/upload`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${Cypress.env('token')}`,
@@ -75,7 +75,7 @@ Cypress.Commands.add('uploadImageFile', (propertyId, fileName) => {
 Cypress.Commands.add('saveImages', (propertyId, createImagePayload) => {
     cy.request({
         method: 'POST',
-        url: `/native-property/${propertyId}/images`,
+        url: `/listing-service/v1/native-property/${propertyId}/images`,
         headers: {
             Authorization: `Bearer ${Cypress.env('token')}`,
             'Content-Type': 'application/json'
