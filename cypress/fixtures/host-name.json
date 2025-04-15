@@ -1,0 +1,36 @@
+[
+  {
+    "testType": "valid",
+    "firstName": "Jenny QC",
+    "lastName": "onb",
+    "description": "Update successfully: valid full name"
+  },
+  {
+    "testType": "missingFirstName",
+    "firstName": "",
+    "lastName": "onb",
+    "description": "Update unsuccessfully: first name is empty"
+
+  },
+  {
+    "testType": "missingLastName",
+    "firstName": "Jenny QC",
+    "lastName": "",
+    "description": "Update unsuccessfully: last name is empty"
+
+  },
+  {
+    "testType": "nullLastName",
+    "firstName": "Jenny QC",
+    "lastName": null,
+    "description": "Update unsuccessfully: last name is null"
+
+  },
+  {
+    "testType": "nullFirstName",
+    "firstName": null,
+    "lastName": "onb",
+    "description": "Update unsuccessfully: first name is null"
+
+  }
+]

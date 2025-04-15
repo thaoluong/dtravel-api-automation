@@ -1,0 +1,22 @@
+[
+  {
+    "testType": "valid",
+    "legalName": "NewLegalName123",
+    "description": "Update successfully: valid legal name"
+  },
+  {
+    "testType": "blankLegalName",
+    "legalName": "",
+    "description": "Update unsuccessfully: legal name = blank"
+  },
+  {
+    "testType": "nullLegalName",
+    "legalName": null,
+    "description": "Update unsuccessfully: legal name = null"
+  },
+  {
+    "testType": "duplicatedLegalName",
+    "legalName": "Jenny Home",
+    "description": "Update unsuccessfully: duplicated legal name"
+  }
+]

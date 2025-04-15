@@ -13,5 +13,9 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-// Import commands.js using ES2015 syntax:
-import './commands'
+// Import cmCreateProperty.js using ES2015 syntax:
+import './cmCreateProperty'
+import './cmUpdateLegalName'
+import './cmGetProfile'
+import './cmUpdateHostName'
+import './cmGetLandingPage'

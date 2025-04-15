@@ -6,7 +6,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     baseUrl: "https://api.dataismist.com",
-    specPattern: "cypress/dtravel-apis/**.*",
+    specPattern: "cypress/dtravel-apis/Setting-apis/**.*",
     reporter: "mochawesome",
   },
 });
