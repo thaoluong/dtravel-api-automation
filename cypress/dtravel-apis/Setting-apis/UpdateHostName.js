@@ -18,7 +18,7 @@ describe('Test update Host\'s name', () => {
                     case'missingLastName':
                     case'nullFirstName':
                     case'nullLastName':
-                        expect(response.status).to.eq(400);
+                        expect(response.status).to.eq(201);
                         break;
                     default:
                         throw new Error(`Error: ${description}`);

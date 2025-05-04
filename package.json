@@ -5,10 +5,10 @@
   "scripts": {
     "open": "cypress open",
     "test": "cypress run",
-    "test:mocha-reporter": "yarn test --reporter mochaawesome --reporter-options reportDir=\"test-result\",overwrite=true,html=false,json=true",
+    "test:mocha-reporter": "yarn test --reporter mochawesome --reporter-options reportDir=\"test-result\",overwrite=true,html=true,json=true",
     "merge-report": "mochawesome-merge \"test-result/*.json\" > index.json",
     "build-report": "marge index.json",
-    "open-report": "yarn merge-report && yarn build-report && serve mochawesom-report"
+    "open-report": "yarn merge-report && yarn build-report && serve mochawesome-report"
   },
   "keywords": [],
   "author": "",

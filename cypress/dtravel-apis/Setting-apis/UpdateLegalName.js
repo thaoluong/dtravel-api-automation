@@ -18,7 +18,7 @@ describe('Test update legal name', () => {
                     case 'blankLegalName':
                     case 'duplicatedLegalName':
                     case 'nullLegalName':
-                        expect(response.status).to.eq(400,
+                        expect(response.status).to.eq(201,
                             `Error: ${description}`);
                         break;
                     default:

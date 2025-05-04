@@ -8,5 +8,12 @@ module.exports = defineConfig({
     baseUrl: "https://api.dataismist.com",
     specPattern: "cypress/dtravel-apis/Setting-apis/**.*",
     reporter: "mochawesome",
+    reporterOptions: {
+      reportDir: "test-result",
+      overwrite: false,
+      html: true,
+      json: true,
+      colorize: true
+    }
   },
 });
